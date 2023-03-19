@@ -1,0 +1,26 @@
+#Create store table
+CREATE TABLE computer_store (id INTEGER, brand TEXT, item TEXT, aisle INTEGER, price INTEGER);
+
+#Insert data into table 
+INSERT INTO computer_store VALUES
+(0001, 'Corsair', 'case', 2, 100),
+(0002, 'Samsung', 'SSD', 3, 149),
+(0003, 'Crucial', 'SSD', 3, 80),
+(0004, 'Corsair', 'RAM', 3, 79),
+(0005, 'NVIDIA', 'GPU', 5, 1800),
+(0006, 'NVIDIA', 'GPU', 5, 1000),
+(0007, 'AMD', 'GPU', 5, 1000),
+(0008, 'AMD', 'CPU', 6, 450),
+(0009, 'Intel', 'CPU', 6, 700),
+(0010, 'SteelSeries', 'Keyboard', 7, 120),
+(0011, 'Corsair', 'Keyboard', 7, 149),
+(0012, 'Corsair', 'Mouse', 7, 49),
+(0013, 'Logitec', 'Mouse', 7, 55),
+(0014, 'Samsung', 'Monitor', 8, 350),
+(0015, 'Asus', 'Monitor', 8, 500);
+
+#Order table by price 
+SELECT * FROM computer_store ORDER BY price;
+
+#Get sum of the total inventory in store
+SELECT SUM(price) AS total_store_amount FROM computer_store;
