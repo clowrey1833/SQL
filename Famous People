@@ -1,0 +1,69 @@
+
+/*Create table for movie stars*/
+CREATE TABLE movie (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    FullName text,
+    Movie_Title text,
+    Character text,
+    book_adaptation INTEGER
+    );
+    
+/*Create table for authors*/
+CREATE TABLE authors (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    FullName text,
+    Book_Series text
+    );
+ 
+/*Create table for fictional characters*/   
+CREATE TABLE characters (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    FullName text,
+    movie_id INTEGER,
+    book_id INTEGER
+    );
+
+/*Insert Values into movie Table*/
+INSERT INTO movie (FullName, Movie_Title, Character, book_adaptation) VALUES
+    ('Tom Cruise', 'Jack Reacher', 'Jack Reacher',2),
+    ('Daniel Radcliffe', 'Harry Potter and the Sorcerer''s Stone ', 'Harry Potter',1),
+    ('Jennifer Lawrence', 'The Hunger Games: Catching Fire', 'Katniss Everdeen',4),
+    ('Josh Hutcherson' , 'The Hunger Games: Catching Fire', 'Peeta Mellark',4),
+    ('Emma Watson', 'Harry Potter and the Prisoner of Azkaban', 'Hermione Granger',1),
+    ('Rupert Grant', 'Harry Potter and the Goblet of Fire', 'Ron Weasley',1),
+    ('Elijah Wood', 'The Lord of the Rings: The Fellowship of the Ring', 'Frodo Baggins',3),
+    ('Ian McKellen', 'The Lord of the Rings: The Two Towers', 'Gandalf',3),
+    ('Viggo Mortensen', 'The Lord of the Rings: The Return of the King', 'Aragorn',3);
+
+/*Insert Values into author Table*/
+INSERT INTO authors (FullName, Book_Series) VALUES
+    ('JK Rowling', 'Harry Potter Series'),
+    ('Lee Child', 'Jack Reacher Series'),
+    ('J. R. R. Tolkien', 'The Lord of the Rings'),
+    ('Suzanne Collins', 'The Hunger Games Series');
+    
+/*Insert Values into character Table*/
+INSERT INTO characters (FullName, movie_id, book_id) VALUES
+    ('Jack Reacher', 1 , 2),
+    ('Harry Potter', 2, 1),
+    ('Hermione Granger', 5, 1),
+    ('Aragorn', 9, 3),
+    ('Ron Weasley', 6, 1),
+    ('Katniss Everdeen', 3, 4),
+    ('Peeta Mellark', 4, 4),
+    ('Frodo Baggins', 7, 3),
+    ('Gandalf', 8, 3);
+
+/*Join to show movie series and book series for characters*/
+SELECT characters.FullName AS Character, Book_Series, Movie_Title FROM characters
+JOIN movie
+ON movie.id = characters.movie_id
+JOIN authors
+ON authors.id = characters.book_id
+ORDER BY Book_Series;
+
+/*Left Outer Join*/
+SELECT movie.FullName AS Actor, Movie_Title, Book_Series, Character FROM movie
+LEFT OUTER JOIN authors
+ON book_adaptation = authors.id
+ORDER BY Book_Series;
