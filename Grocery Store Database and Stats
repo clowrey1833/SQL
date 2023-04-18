@@ -1,7 +1,10 @@
-#Create store table
+--Create a computer store database
+
+
+--Create store table
 CREATE TABLE computer_store (id INTEGER, brand TEXT, item TEXT, aisle INTEGER, price INTEGER);
 
-#Insert data into table 
+--Insert data into table 
 INSERT INTO computer_store VALUES
 (0001, 'Corsair', 'case', 2, 100),
 (0002, 'Samsung', 'SSD', 3, 149),
@@ -19,8 +22,8 @@ INSERT INTO computer_store VALUES
 (0014, 'Samsung', 'Monitor', 8, 350),
 (0015, 'Asus', 'Monitor', 8, 500);
 
-#Order table by price 
+--Display the database by price.
 SELECT * FROM computer_store ORDER BY price;
 
-#Get sum of the total inventory in store
+--Get sum of the total inventory in store
 SELECT SUM(price) AS total_store_amount FROM computer_store;
