@@ -38,3 +38,14 @@ SELECT artist_name, popularity
 FROM BIT_DB.Spotifydata
 ORDER BY popularity DESC
 LIMIT 10;
+
+# Creating a CTE with the Spotify Data
+WITH average_popularity_CTE AS (
+SELECT artist_name, AVG(popularity) AS average_popularity
+FROM Spotifydata
+GROUP BY artist_name
+)
+
+SELECT artist_name, average_popularity, 'Top Star' AS tag
+FROM average_popularity_CTE
+WHERE average_popularity >= 90;
